@@ -1,0 +1,36 @@
+@def shadeWidth 0.5em;
+
+.containerBox{
+	position: relative;
+}
+
+@sprite .shadeBox{
+	gwt-image: 'transparentBg';
+	position: relative;
+	\-moz-border-radius-topleft: 8px;
+	\-moz-border-radius-topright: 8px;
+	\-webkit-border-top-left-radius: 8px;
+	\-webkit-border-top-right-radius: 8px;
+	\-moz-border-radius-bottomleft: 8px;
+	\-moz-border-radius-bottomright: 8px;
+	\-webkit-border-bottom-left-radius: 8px;
+	\-webkit-border-bottom-right-radius: 8px;
+	
+	
+}
+
+.contentBox{
+	background-color: #ffffff;
+	padding: 1.5em;
+}
+
+@sprite .closeButton{
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	gwt-image: 'closeIcon';
+	height: 30px;
+	width: 30px;
+	background-color: transparent;
+	cursor: pointer;
+}

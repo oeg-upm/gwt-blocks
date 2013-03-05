@@ -1,0 +1,9 @@
+.settings
+target
+.classpath
+.project
+.classpath
+
+*.swp
+.svn
+tomcat

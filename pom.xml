@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<parent>
+		<artifactId>parent-pom</artifactId>
+		<groupId>name.alexdeleon.maven</groupId>
+		<version>1.2</version>
+	</parent>
+
+
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>name.alexdeleon.lib</groupId>
+	<artifactId>gwt-blocks</artifactId>
+	<name>GWT Building Blocks</name>
+	<version>0.0.8-SNAPSHOT</version>
+
+
+	<scm>
+		<connection>scm:svn:http://svn.alexdeleon.name/lib/gwt-blocks/trunk</connection>
+		<developerConnection>scm:svn:http://svn.alexdeleon.name/lib/gwt-blocks/trunk</developerConnection>
+		<url>http://svn.alexdeleon.name/lib/gwt-blocks/trunk</url>
+	</scm>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.google.gwt</groupId>
+			<artifactId>gwt-user</artifactId>
+			<version>2.0.4</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>gin</artifactId>
+			<version>0.0.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.inject</groupId>
+			<artifactId>guice</artifactId>
+			<version>2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.customware.gwt.presenter</groupId>
+			<artifactId>gwt-presenter</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>net.customware.gwt.dispatch</groupId>
+        	<artifactId>gwt-dispatch</artifactId>
+        	<version>1.0.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- Make sure our GWT module definition(s) and Java source code are also included in JAR -->
+		<resources>
+			<resource>
+				<directory>src/main/java</directory>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+
+	</build>
+</project>
