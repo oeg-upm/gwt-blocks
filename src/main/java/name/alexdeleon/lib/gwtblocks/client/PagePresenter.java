@@ -35,7 +35,8 @@ import net.customware.gwt.presenter.client.widget.WidgetPresenter;
  * 
  * @author Alexander De Leon
  */
-public abstract class PagePresenter<E extends WidgetDisplay> extends WidgetPresenter<E> {
+public abstract class PagePresenter<E extends WidgetDisplay> extends
+		WidgetPresenter<E> {
 
 	private final Set<ControlPresenter<?>> children = new HashSet<ControlPresenter<?>>();
 
@@ -74,9 +75,6 @@ public abstract class PagePresenter<E extends WidgetDisplay> extends WidgetPrese
 	}
 
 	public final void refreshDisplay() {
-		for (ControlPresenter<?> control : children) {
-			control.refreshDisplay();
-		}
 		onRefreshDisplay();
 	}
 

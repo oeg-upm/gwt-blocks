@@ -20,14 +20,15 @@
  */
 package name.alexdeleon.lib.gwtblocks.client.ui.share;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.MouseOutEvent;
 import com.google.gwt.event.dom.client.MouseOutHandler;
 import com.google.gwt.event.dom.client.MouseOverEvent;
 import com.google.gwt.event.dom.client.MouseOverHandler;
-import com.google.gwt.user.client.DOM;
-import com.google.gwt.user.client.Element;
+import com.google.gwt.user.client.ui.Anchor;
+import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Widget;
 
 /**
@@ -41,8 +42,8 @@ public class AddThisButton extends Widget {
 	private static final String DEFAULT_WIDTH = "125";
 	private static final String DEFAULT_HEIGHT = "16";
 
-	private final Element anchor;
-	private final Element image;
+	private final Widget anchor;
+	private final Widget image;
 
 	public AddThisButton() {
 		this("en");
@@ -55,19 +56,21 @@ public class AddThisButton extends Widget {
 	 *            the two letter code of the language
 	 */
 	public AddThisButton(String language) {
-		anchor = DOM.createAnchor();
-		DOM.setElementAttribute(anchor, "href", HREF);
+		anchor = new Anchor();
+		
+		anchor.getElement().setAttribute("href", HREF);
 
-		image = DOM.createImg();
-		DOM.setElementAttribute(image, "src", SRC.replace("{LANG}", language));
-		DOM.setStyleAttribute(image, "border", "0");
+		image = new Image();
+		image.getElement().setAttribute("src", SRC.replace("{LANG}", language));
+		image.getElement().getStyle().setProperty("border", "0");
 
-		anchor.appendChild(image);
+
+		anchor.getElement().appendChild(image.getElement());
 
 		setWidth(DEFAULT_WIDTH);
 		setHeight(DEFAULT_HEIGHT);
-
-		setElement(anchor);
+		
+		this.getElement().appendChild(anchor.getElement());
 
 		addStyleName(CLASS);
 		addEvents();
@@ -82,7 +85,7 @@ public class AddThisButton extends Widget {
 		addDomHandler(new MouseOverHandler() {
 
 			public void onMouseOver(MouseOverEvent event) {
-				addThisOpen(anchor);
+				addThisOpen(anchor.getElement());
 			}
 		}, MouseOverEvent.getType());
 		addDomHandler(new MouseOutHandler() {
@@ -102,32 +105,32 @@ public class AddThisButton extends Widget {
 
 	@Override
 	public void setWidth(String width) {
-		DOM.setElementProperty(image, "width", width);
+		image.getElement().setAttribute("width", width);
 	}
 
 	@Override
 	public void setHeight(String height) {
-		DOM.setElementProperty(image, "height", height);
+		image.getElement().setAttribute("height", height);
 	}
 
 	public void setShareUrl(String url) {
-		DOM.setElementProperty(anchor, "addthis:url", url);
+		image.getElement().setAttribute("addthis:url", url);
 	}
 
 	@Override
 	public void setTitle(String title) {
-		DOM.setElementProperty(anchor, "addthis:title", title);
+		image.getElement().setAttribute("addthis:title", title);
 	}
 
 	public void setDescription(String description) {
-		DOM.setElementProperty(anchor, "addthis:description", description);
+		image.getElement().setAttribute("addthis:description", description);
 	}
 
 	public void setImageAlt(String alt) {
-		DOM.setElementProperty(image, "alt", alt);
+		image.getElement().setAttribute("alt", alt);
 	}
 
-	private static final native void addThisOpen(Element e)/*-{ $wnd.addthis_open(e, '' , e['addthis:url'], e['addthis:title']); }-*/;
+	private static final native void addThisOpen(JavaScriptObject e)/*-{ $wnd.addthis_open(e, '' , e['addthis:url'], e['addthis:title']); }-*/;
 
 	private static final native void addThisClose()/*-{ $wnd.addthis_close(); }-*/;
 

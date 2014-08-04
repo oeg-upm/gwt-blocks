@@ -24,7 +24,6 @@ import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.HasClickHandlers;
 import com.google.gwt.event.shared.HandlerRegistration;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.Widget;
@@ -86,8 +85,8 @@ public class PrettyPopup extends PopupPanel {
 		containerBox.add(shadeBox);
 		containerBox.add(closeButton);
 		shadeBox.add(contentBox);
-
-		DOM.setStyleAttribute(shadeBox.getElement(), "padding", style.shadeWidth());
+		
+		shadeBox.getElement().getStyle().setProperty("padding", style.shadeWidth());
 
 		return containerBox;
 	}

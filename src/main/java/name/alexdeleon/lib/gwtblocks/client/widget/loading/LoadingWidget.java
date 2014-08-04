@@ -1,8 +1,8 @@
 /**
  * Copyright (c) 2011 Ontology Engineering Group, 
  * Departamento de Inteligencia Artificial,
- * Facultad de Informática, Universidad 
- * Politécnica de Madrid, Spain
+ * Facultad de Inform√°tica, Universidad 
+ * Polit√©cnica de Madrid, Spain
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,8 @@ package name.alexdeleon.lib.gwtblocks.client.widget.loading;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.google.gwt.dom.client.Style;
 import com.google.gwt.resources.client.ImageResource;
-import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.Label;
@@ -84,7 +84,7 @@ public class LoadingWidget extends PopupPanel {
 		FlowPanel panel = new FlowPanel();
 		Image icon = new Image(loadingIcon);
 		icon.setStyleName(style.loadingWidgetIconStyle());
-		DOM.setStyleAttribute(label.getElement(), "float", "right");
+		label.getElement().getStyle().setFloat(Style.Float.RIGHT);
 		panel.add(icon);
 		panel.add(label);
 

@@ -20,9 +20,8 @@
  */
 package name.alexdeleon.lib.gwtblocks.client;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.HashMap;
+import java.util.Map;
 
 import net.customware.gwt.presenter.client.EventBus;
 import net.customware.gwt.presenter.client.place.Place;
@@ -37,40 +36,42 @@ import com.google.gwt.user.client.ui.Widget;
 /**
  * @author Alexander De Leon
  */
-public class AppController extends WidgetPresenter<AppController.Display> implements PlaceRequestHandler {
+public class AppController extends WidgetPresenter<AppController.Display>
+		implements PlaceRequestHandler {
 
 	public interface Display extends WidgetDisplay {
 		void setContent(Widget widget);
 	}
 
-	private final Set<WidgetPresenter<?>> presenters;
+	//private final Set<WidgetPresenter<?>> presenters;
+	private Map<String,WidgetPresenter<?>> presenters;
+	private Map<String,Place> places;
 
 	public AppController(Display display, EventBus eventBus) {
 		super(display, eventBus);
-		presenters = new HashSet<WidgetPresenter<?>>();
+		presenters = new HashMap<String,WidgetPresenter<?>>();
 		eventBus.addHandler(PlaceRequestEvent.getType(), this);
 	}
 
-	public AppController(Display display, EventBus eventBus, WidgetPresenter<?>... presenters) {
-		this(display, eventBus);
-		Collections.addAll(this.presenters, presenters);
-	}
 
-	public void addPresenter(WidgetPresenter<?> presenter) {
-		presenters.add(presenter);
+	public void addPresenter(WidgetPresenter<?> presenter,Place place) {
+		this.presenters.put(place.getName(), presenter);
+		places.put(place.getName(), place);
 	}
 
 	public void removePresenter(WidgetPresenter<?> presenter) {
 		presenters.remove(presenter);
 	}
-
+	
+	@Override
 	public void onPlaceRequest(PlaceRequestEvent event) {
-		Place place = event.getRequest().getPlace();
+		String place = event.getRequest().getName();
 		if (place == null) {
 			return;
 		}
-		for (WidgetPresenter<?> presenter : presenters) {
-			if (place.equals(presenter.getPlace())) {
+		for (String namePlace:this.presenters.keySet()) {
+			if (place.equals(namePlace)) {
+				WidgetPresenter<?> presenter=this.presenters.get(namePlace);
 				getDisplay().setContent(presenter.getDisplay().asWidget());
 				break;
 			}
@@ -78,7 +79,6 @@ public class AppController extends WidgetPresenter<AppController.Display> implem
 	}
 
 	/* ----- Presenter API -- */
-	@Override
 	public Place getPlace() {
 		// This is the default place
 		return null;
@@ -87,12 +87,11 @@ public class AppController extends WidgetPresenter<AppController.Display> implem
 	@Override
 	protected void onBind() {
 		// bind children
-		for (WidgetPresenter<?> presenter : presenters) {
+		for (WidgetPresenter<?> presenter : presenters.values()) {
 			presenter.bind();
 		}
 	}
 
-	@Override
 	protected void onPlaceRequest(PlaceRequest request) {
 		// empty
 	}
@@ -100,7 +99,7 @@ public class AppController extends WidgetPresenter<AppController.Display> implem
 	@Override
 	protected void onUnbind() {
 		// unbind children
-		for (WidgetPresenter<?> presenter : presenters) {
+		for (WidgetPresenter<?> presenter : presenters.values()) {
 			presenter.unbind();
 		}
 	}
@@ -111,6 +110,12 @@ public class AppController extends WidgetPresenter<AppController.Display> implem
 
 	public void revealDisplay() {
 		// empty
+	}
+
+	@Override
+	protected void onRevealDisplay() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

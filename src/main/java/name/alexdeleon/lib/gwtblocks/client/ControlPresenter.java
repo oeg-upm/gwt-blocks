@@ -36,17 +36,12 @@ public abstract class ControlPresenter<E extends WidgetDisplay> extends WidgetPr
 	public ControlPresenter(E display, EventBus eventBus) {
 		super(display, eventBus);
 	}
-
-	@Override
 	public Place getPlace() {
 		// A controller is not associated with a place.
 		return null;
 	}
-
-	@Override
 	protected void onPlaceRequest(PlaceRequest request) {
 		// no need for handling the place request. The parent page presenter
 		// must do this and communicate to this controll if necessary.
 	}
-
 }

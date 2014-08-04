@@ -24,7 +24,7 @@ package name.alexdeleon.lib.gwtblocks.client.place;
 /**
  * @author Alexander De Leon
  */
-public interface Place {
+public interface Place{
 
 	String getName();
 

@@ -10,42 +10,30 @@
 	<groupId>name.alexdeleon.lib</groupId>
 	<artifactId>gwt-blocks</artifactId>
 	<name>GWT Building Blocks</name>
-	<version>0.0.8-SNAPSHOT</version>
-
-
-	<scm>
-		<connection>scm:svn:http://svn.alexdeleon.name/lib/gwt-blocks/trunk</connection>
-		<developerConnection>scm:svn:http://svn.alexdeleon.name/lib/gwt-blocks/trunk</developerConnection>
-		<url>http://svn.alexdeleon.name/lib/gwt-blocks/trunk</url>
-	</scm>
+	<version>0.1.0</version>
 
 	<dependencies>
 		<dependency>
 			<groupId>com.google.gwt</groupId>
 			<artifactId>gwt-user</artifactId>
-			<version>2.0.4</version>
+			<version>2.6.1</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.google.inject</groupId>
+			<groupId>com.google.gwt.inject</groupId>
 			<artifactId>gin</artifactId>
-			<version>0.0.1</version>
 			<scope>compile</scope>
+			<version>2.1.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.google.inject</groupId>
 			<artifactId>guice</artifactId>
-			<version>2.0</version>
+			<version>3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>net.customware.gwt.presenter</groupId>
 			<artifactId>gwt-presenter</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>net.customware.gwt.dispatch</groupId>
-        	<artifactId>gwt-dispatch</artifactId>
-        	<version>1.0.0</version>
+			<version>1.1.1</version>
 		</dependency>
 	</dependencies>
 
@@ -55,10 +43,27 @@
 			<resource>
 				<directory>src/main/java</directory>
 			</resource>
-			<resource>
-				<directory>src/main/resources</directory>
-			</resource>
 		</resources>
 
 	</build>
+	<repositories>
+		<repository>
+			<id>map4rdf_maven</id>
+			<name>map4rdf maven</name>
+			<url>http://oeg-dev.dia.fi.upm.es:8081/nexus/content/repositories/map4rdf_maven/</url>
+		</repository>
+		<repository>
+			<id>oeg-maven</id>
+			<name>OEG Maven Repository</name>
+			<url>http://oeg-dev.dia.fi.upm.es/maven/public/</url>
+		</repository>
+		<repository>
+			<id>tmate</id>
+			<url>http://maven.tmatesoft.com/content/repositories/releases</url>
+		</repository>
+		<repository>
+			<id>Maven</id>
+			<url>http://repo1.maven.org/maven2/</url>
+		</repository>
+	</repositories>
 </project>
