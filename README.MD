@@ -50,14 +50,35 @@ If you want, change the version to another.
 - If you do not use Maven:  
 Import the file "target/gwt-block-VERSION.jar" into your project.  
 Download and import:
-  * GWT-user 
-  * GWT inject
-  * GWT Guice
-  * GWT Presenter
+  * GWT user 2.6.1
+  * GWT inject 2.1.2
+  * GWT Guice 1.2.0
+  * GWT Presenter 1.1.1
 
 **Use the library**  
+1) As presenter/display  
+Create a new class (Your own presenter/display):  
+~~~java
+public class MyOwnPresenter extends ControlPresenter<MyOwnPresenter.Display> {
 
-
+	public interface Display extends WidgetDisplay {
+	  ... //Interface methods
+	}
+	
+}
+~~~
+Implements your view:
+~~~java
+~~~
+Create your own injector and bind the display with the presenter:  
+~~~java
+public class InjectorModule extends AbstractPresenterModule {
+	@Override
+	protected void configure() {
+		bindDisplay(MyOwnPresenter.Display.class, BufferView.class);
+	}
+}
+~~~
 ## 4) Development guide <a name="developmentGuide"></a>  
 
 For development guide visit the follow link:  
