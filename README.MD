@@ -19,8 +19,9 @@ Manages your URL places with PlaceManager.
   3.2. [Use the library](#useLibrary)  
     3.2.a. [Use as presenter/display](#useAsPresenter)  
     3.2.b. [Use the widgets](#useWidgets)  
-      3.2.b.a. [Loading widget](#useLoadingWidget)  
-      3.2.b.b. [PrettyPopup](#usePrettyPopup)  
+        3.2.b.a. [Loading widget](#useLoadingWidget)  
+        3.2.b.b. [PrettyPopup](#usePrettyPopup)  
+        3.2.b.c. [ToggleButton](#useToggleButton)  
 4. [Development guide](#developmentGuide)  
 5. [Version](#version)  
 
@@ -151,7 +152,7 @@ Add content to the popup:
 myPopup.getContentPanel().add(new HTML("<p>Hello</p>")\/\*My Widgets or views\*\/);
 ~~~
 
-__3.2.b.b) Use ToggleButton__  <a name="useToggleButton"></a>  
+__3.2.b.c) Use ToggleButton__  <a name="useToggleButton"></a>  
 Create a toggle button:
 ~~~java
 CSS css; //TODO Create a css for the button. Example: = MyOwnCss(); that implements ToggleButton.Stylesheet
