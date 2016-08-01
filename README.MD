@@ -151,6 +151,14 @@ Add content to the popup:
 myPopup.getContentPanel().add(new HTML("<p>Hello</p>")\/\*My Widgets or views\*\/);
 ~~~
 
+__3.2.b.b) Use ToggleButton__  <a name="useToggleButton"></a>  
+Create a toggle button:
+~~~java
+CSS css; //TODO Create a css for the button. Example: = MyOwnCss(); that implements ToggleButton.Stylesheet
+ToggleButton toggleButton = new ToggleButton(css);
+//TODO Add the button to a panel. Example: RootLayoutPanel.get().add(toggleButton);
+~~~
+
 ## 4) Development guide <a name="developmentGuide"></a>  
 
 For development guide visit the follow link:  
