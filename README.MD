@@ -4,7 +4,6 @@ Add to your projects 3 new widgets: loading box, prettypopup, togglebutton.
 Add new events for togglebutton: toggleEvent and hasToggleEvent.  
 Manages your URL places with PlaceManager.
 
-#Table of Contents
 # Table of Contents
 1. [Pre-requisites](#pre-requisites)
 3. [Compile and install it](#compile)
