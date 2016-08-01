@@ -39,7 +39,7 @@ mvn clean install
 Maven install the library on local repository.
 
 ## 3) Use as library <a name="useAsLibrary"></a>  
-3.1) **Import the library**  <a name="importLibrary"></a>  
+**3.1) Import the library**  <a name="importLibrary"></a>  
 
 - If you use Maven:  
 See <https://maven.apache.org/> for more information.  
@@ -62,8 +62,8 @@ Download and import:
   * GWT Guice 1.2.0
   * GWT Presenter 1.1.1
 
-3.2) **Use the library**  <a name="useLibrary"></a>  
-a) __As presenter/display__  <a name="useAsPresenter"></a>  
+**3.2) Use the library**  <a name="useLibrary"></a>  
+__3.2.a) As presenter/display__  <a name="useAsPresenter"></a>  
 Create a new class (Your own presenter/display):  
 ~~~java
 public class MyOwnPresenter extends ControlPresenter<MyOwnPresenter.Display> {
@@ -112,8 +112,8 @@ try {
 }
 RootLayoutPanel.get().add(injector.getMyOwnPresenter().getDisplay().asWidget());
 ~~~
-b) __Use widgets__ <a name="useWidgets"></a>  
-b.a) *Use Loading widget*  <a name="useLoadingWidget"></a>  
+__3.2.b) Use widgets__ <a name="useWidgets"></a>  
+__3.2.b.a) Use Loading widget__  <a name="useLoadingWidget"></a>  
 Include the follow code on your view:  
 ~~~java
 ImageResource loadingIcon; //TODO: create a loading icon
@@ -130,7 +130,7 @@ Use this line for hide the widget:
 loadingWidget.hide();  
 ~~~
 
-b.b) *Use PrettyPopup*  <a name="usePrettyPopup"></a>  
+__3.2.b.b) Use PrettyPopup__  <a name="usePrettyPopup"></a>  
 Create style:  
 If you want to use the default style put:  
 ~~~java
