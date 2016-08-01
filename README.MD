@@ -168,5 +168,3 @@ For development guide visit the follow link:
 ## 5) Version <a name="version"></a>
 
 0.1.0
-
-// TODO: Update README.MD
