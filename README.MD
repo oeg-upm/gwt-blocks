@@ -109,7 +109,10 @@ b) Use widgets
 b.a) Use Loading widget  
 Include the follow code on your view:  
 ~~~java
-LoadingWidget loadingWidget = new LoadingWidget(resources.loadingIcon(), messages.loading(), resources.css());
+ImageResource loadingIcon; //TODO: create a loading icon
+LoadingWidget.Stylesheet css; //TODO: implements this interface with styles
+String loadingMessage = "Loading"; //TODO: your own loading messages for example in spanish "Cargando"
+LoadingWidget loadingWidget = new LoadingWidget(loadingIcon, loadingMessage, css);
 ~~~
 Use this line for view the widget:  
 ~~~java
@@ -118,6 +121,27 @@ loadingWidget.center();
 Use this line for hide the widget:  
 ~~~java
 loadingWidget.hide();  
+~~~
+
+b.b) Use PrettyPopup  
+Create style:  
+If you want to use the default style put:  
+~~~java
+PrettyPopup.Stylesheet css = PrettyPopupStylesheetFactory.getDefaultStylesheet();
+~~~
+If you want to use your own style:   
+~~~java
+PrettyPopup.Stylesheet css = new MyOwnStyleSheet(); //TODO: create your own class that implements PrettyPopup.Stylesheet
+~~~
+
+Create the popup:  
+~~~java
+boolean modal = true; //If you want that the popup is modal popup.
+PrettyPopup myPopup = new PrettyPopup(css, modal);
+~~~
+Add content to the popup:  
+~~~java
+myPopup.getContentPanel().add(new HTML("<p>Hello</p>")\/\*My Widgets or views\*\/);
 ~~~
 
 ## 4) Development guide <a name="developmentGuide"></a>  
