@@ -56,7 +56,7 @@ Download and import:
   * GWT Presenter 1.1.1
 
 **Use the library**  
-1) As presenter/display  
+a) As presenter/display  
 Create a new class (Your own presenter/display):  
 ~~~java
 public class MyOwnPresenter extends ControlPresenter<MyOwnPresenter.Display> {
@@ -67,18 +67,59 @@ public class MyOwnPresenter extends ControlPresenter<MyOwnPresenter.Display> {
 	
 }
 ~~~
-Implements your view:
+Implements your view:  
 ~~~java
+public class MyOwnView extends Composite implements MyOwnPresenter.Display {
+	... //TODO: Implements methods.
+}
 ~~~
 Create your own injector and bind the display with the presenter:  
 ~~~java
-public class InjectorModule extends AbstractPresenterModule {
+public class MyOwnInjectorModule extends AbstractPresenterModule {
 	@Override
 	protected void configure() {
-		bindDisplay(MyOwnPresenter.Display.class, BufferView.class);
+		bindDisplay(MyOwnPresenter.Display.class, MyOwnView.class);
 	}
 }
 ~~~
+Bind your injector to GWT Inject module:  
+~~~java
+@GinModules( { MyOwnInjectorModule.class})
+public interface Injector extends Ginjector {
+	MyOwnPresenter getMyOwnPresenter();
+	//TODO: Add your others views methods
+}
+~~~
+
+
+Include the next code on client entrypoint:  
+~~~java
+Injector injector = null;
+try {
+	injector = GWT.create(Injector.class);
+} catch (Exception e) {
+	injector = null;
+	Window.alert("An several exception ocurred when load the webpage. "
+			+ " Exception: " + e.getMessage() + "."
+			+ "Please contact with System Admin");
+}
+RootLayoutPanel.get().add(injector.getMyOwnPresenter().getDisplay().asWidget());
+~~~
+b) Use widgets  
+b.a) Use Loading widget  
+Include the follow code on your view:  
+~~~java
+LoadingWidget loadingWidget = new LoadingWidget(resources.loadingIcon(), messages.loading(), resources.css());
+~~~
+Use this line for view the widget:  
+~~~java
+loadingWidget.center();
+~~~
+Use this line for hide the widget:  
+~~~java
+loadingWidget.hide();  
+~~~
+
 ## 4) Development guide <a name="developmentGuide"></a>  
 
 For development guide visit the follow link:  
