@@ -39,11 +39,11 @@ Maven install the library on local repository.
 See <https://maven.apache.org/> for more information.  
 When you does "mvn clean install" the library is installed locally (On your machine).  
 Put the next code on your pom.xml file (of your project) (Change the version and put the latest version):  
-> <dependency>
->   <groupId>name.alexdeleon.lib</groupId>
->   <artifactId>gwt-blocks</artifactId>
->   <version>0.1.0</version>
-> </dependency>  
+  > <dependency>  
+  >   <groupId>name.alexdeleon.lib</groupId>  
+  >   <artifactId>gwt-blocks</artifactId>  
+  >   <version>0.1.0</version>  
+  > </dependency>  
 
 If you want, change the version to another.
 
