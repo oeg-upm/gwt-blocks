@@ -9,7 +9,7 @@
 This respository aims to help for the development of GWT projects.  
 Add to your projects 3 new widgets: loading box, prettypopup, togglebutton.  
 Add new events for togglebutton: toggleEvent and hasToggleEvent.  
-Manages your URL places with PlaceManager.
+Manages your URL places with PlaceManager.  
 Better abstraction from presenter-display model.
 
 # Table of Contents
